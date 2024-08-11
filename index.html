@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .todo-item{
+        .todo-item {
             border: 4px double black;
             padding: 5px;
             margin: 5px;
@@ -15,7 +16,8 @@
             display: flex;
             justify-content: space-between;
         }
-        .btn{
+
+        .btn {
             background-color: #C5705D;
             color: black;
             font-size: 9px;
@@ -26,42 +28,65 @@
         }
     </style>
 </head>
+
 <body>
     <h1>ToDoApp</h1>
     <div id="tasks-container">
-
+        
     </div>
+    <input type="text" placeholder="enter task" id="task-input">
+        <button onclick="addTask()">Add</button>
     <script>
-        const tasks = [""];
-        function loadFromLocalStorage(){
-            const allTasks = JSON.parse(localStorage.getItem('allTasks')) ;
+        const tasks = [];
+        function loadFromLocalStorage() {
+            const allTasks = JSON.parse(localStorage.getItem('allTasks'));
+            if (allTasks) {
+                tasks.push(...allTasks)
+            }
+            loadtasks();
+
         }
-        function loadtasks(){
-            localStorage.setItem('allTasks',JSON.stringify(tasks));
-            const taskscontainer =document.getElementById("tasks-container");
+        loadFromLocalStorage();
+
+        function loadtasks() {
+            localStorage.setItem('allTasks', JSON.stringify(tasks));
+            const taskscontainer = document.getElementById("tasks-container");
             taskscontainer.innerHTML = "";
 
-            for (const task of tasks){
-            
+            for (const task of tasks) {
+
                 taskscontainer.innerHTML +=
-                `<div class = "todo-item">
+                    `<div class = "todo-item">
                     ${task}
                     <button class ="btn" type = "button" onclick = "removeTask('${task}')">Remove</button>
                 </div>`
 
             }
-            
-            
+
+
         }
         loadtasks();
-        function removeTask(task){
-            const taskIndex = tasks.indexOf(task) ;     
-                tasks.splice( taskIndex ,1); 
-                loadtasks(); 
+        function removeTask(task) {
+            const taskIndex = tasks.indexOf(task);
+            tasks.splice(taskIndex, 1);
+            loadtasks();
+        }
+        function addTask() {
+            const taskInputElement = document.getElementById('task-input');
+            const task = taskInputElement.value;
+            if (!task) {
+                alert('please enter task');
+                return;
             }
-        
+            tasks.unshift(task);
+            loadtasks();
+            taskInputElement.value = "";
+
+        }
+
 
     </script>
-    
+
 </body>
+
 </html>
