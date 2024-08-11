@@ -42,14 +42,19 @@
                 taskscontainer.innerHTML +=
                 `<div class = "todo-item">
                     ${task}
-                    <button class ="btn" type = "button">Remove</button>
+                    <button class ="btn" type = "button" onclick = "removeTask('${task}')">Remove</button>
                 </div>`
 
             }
-
-
+            
+            
         }
         loadtasks();
+        function removeTask(task){
+            const taskIndex = tasks.indexOf(task) ;     
+                tasks.splice( taskIndex ,1); 
+                loadtasks(); 
+            }
         
 
     </script>
