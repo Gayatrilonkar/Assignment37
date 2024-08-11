@@ -4,23 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .todo-item{
+            border: 4px double black;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+            background-color: #F1D3CE;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn{
+            background-color: #C5705D;
+            color: black;
+            font-size: 9px;
+            border: none;
+            border-radius: 22px;
+            cursor: pointer;
+            height: 18px;
+        }
+    </style>
 </head>
 <body>
     <h1>ToDoApp</h1>
-    <div id="task-container">
+    <div id="tasks-container">
 
     </div>
     <script>
-        const task = ["Eat","sleep","code","repeat"];
-        function loadtask(){
-            const taskcontainer =document.getElementById("task-container");
+        const tasks = ["Eat","sleep","code","repeat"];
+        function loadtasks(){
+            const taskscontainer =document.getElementById("tasks-container");
+            taskscontainer.innerHTML = "";
+
             for (const task of tasks){
-                console.log(tasks);
+            
+                taskscontainer.innerHTML +=
+                `<div class = "todo-item">
+                    ${task}
+                    <button class ="btn" type = "button">Remove</button>
+                </div>`
+
             }
 
 
         }
-        loadtask();
+        loadtasks();
+        
 
     </script>
     
