@@ -32,8 +32,12 @@
 
     </div>
     <script>
-        const tasks = ["Eat","sleep","code","repeat"];
+        const tasks = [""];
+        function loadFromLocalStorage(){
+            const allTasks = JSON.parse(localStorage.getItem('allTasks')) ;
+        }
         function loadtasks(){
+            localStorage.setItem('allTasks',JSON.stringify(tasks));
             const taskscontainer =document.getElementById("tasks-container");
             taskscontainer.innerHTML = "";
 
