@@ -26,6 +26,24 @@
             cursor: pointer;
             height: 18px;
         }
+
+        
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px auto;
+           
+        }
+        .input{
+            width: 400px;
+            height: 20px;
+        }
+        .btn{
+            margin-left: 20px;
+            height: 20px;
+            width: 100px;
+        }
     </style>
 </head>
 
@@ -34,8 +52,10 @@
     <div id="tasks-container">
         
     </div>
-    <input type="text" placeholder="enter task" id="task-input">
-        <button onclick="addTask()">Add</button>
+    <div class="btn-container">
+        <input type="text" class="input" placeholder= "Enter task" id="task-input">
+        <button class="btn" onclick="addTask()">Add</button>
+    </div>
     <script>
         const tasks = [];
         function loadFromLocalStorage() {
